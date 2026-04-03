@@ -31,6 +31,15 @@ button {
 }
 
 /* header-wrapper 영역 */
+#header-wrapper {
+  gap: 8px;
+}
+
+#reset {
+  display: flex;
+  align-items: center;
+}
+
 #reset-button {
   font-size: 15px;
   border-radius: 50%;
