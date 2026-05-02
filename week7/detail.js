@@ -6,6 +6,9 @@ const keyword = params.get("keyword");
 const place = params.get("location");
 const imageUrl = params.get("image");
 
+const tabTitle = document.querySelector('title');
+tabTitle.innerText = title;
+
 const detail = document.getElementById("detail");
 
 const image = document.createElement("img");
