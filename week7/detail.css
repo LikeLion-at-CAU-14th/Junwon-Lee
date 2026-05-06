@@ -1,0 +1,21 @@
+#detail {
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+img {
+    max-width: 80%;
+    max-height: 70%;
+    width: auto;
+    height: auto;
+}
+
+#info {
+    max-width: 80%;
+    word-break: break-word;
+}
