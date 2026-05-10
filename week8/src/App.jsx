@@ -1,33 +1,18 @@
 import React from 'react'
-import Header from './components/Header.jsx'
-import Body from './components/Body.jsx'
-import Footer from './components/Footer.jsx'
-import styled from 'styled-components'
+import Home from './pages/Home'
+import About from './pages/About'
+import Interest from './pages/Interest'
+import Contact from './pages/Contact'
 
 const App = () => {
   return (
-    <Container>
-      <CardBox>
-        <Header />
-        <Body />
-        <Footer />
-      </CardBox>
-    </Container>
+    <>
+      <Home />
+      <About />
+      <Interest />
+      <Contact />
+    </>
   )
 }
 
 export default App
-
-const Container = styled.div`
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  min-height: 100vh; 
-  background: #f9fafb;
-`
-const CardBox = styled.div`
-  background: white; 
-  border-radius: 20px; 
-  padding: 40px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-`
