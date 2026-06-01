@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const FILTER_LIST = [
-    { label: '🦁 전체', value: 'all' },
-    { label: '👦 남',   value: 'male' },
-    { label: '👧 여',   value: 'female' },
+    { label: '🦁 PM/DE', value: 'pm/de' },
+    { label: '🦁 FE',    value: 'front' },
+    { label: '🦁 BE',    value: 'back' },
 ];
 
 const FilterBar = ({ filter, setFilter }) => {
