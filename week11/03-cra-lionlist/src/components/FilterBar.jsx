@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const FILTER_LIST = [
-    { label: '🦁 PM/DE', value: 'pm/de' },
-    { label: '🦁 FE',    value: 'front' },
-    { label: '🦁 BE',    value: 'back' },
+    { label: '🦁 PM/DE', value: 'PM/DE' },
+    { label: '🦁 FE',    value: 'FE' },
+    { label: '🦁 BE',    value: 'BE' },
 ];
 
 const FilterBar = ({ filter, setFilter }) => {
