@@ -107,7 +107,7 @@ const QuestionCard = styled.div`
 const QuestionText = styled.div`
   font-size: 24px;
   font-weight: 600;
-  color: #444;
+  color: #535353;
   text-align: center;
 `;
 
@@ -124,7 +124,7 @@ const AnswerButton = styled.button`
   font-size: 17px;
   border: 2px solid #ddd;
   background-color: white;
-  color: #555;
+  color: #535353;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s ease;
