@@ -4,12 +4,29 @@ import { ThemeColorContext } from '../../context/context'
 import { useNavigate } from 'react-router-dom';
 import { Button, Card, Title, Wrapper } from '../layout/common';
 import Form from './Form';
+import { UserInfoContext } from '../../context/UserInfoContext';
+import { useState } from 'react';
 
 const FormSection = () => {
     const mode = useContext(ThemeColorContext);
     const navigate = useNavigate();
 
+    const { dispatch } = useContext(UserInfoContext);
+
+    const [form, setForm] = useState({
+        name: '',
+        email: '',
+        birth: '',
+        gender: '',
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm((prev) => ({ ...prev, [name]: value }));
+    };
+
     const handleSubmit = () => {
+        dispatch({ type: 'SET_USER_INFO', payload: form });
         navigate('/mypage');
     }
 
@@ -17,10 +34,10 @@ const FormSection = () => {
     <Wrapper>
         <Card>
             <Title>회원 정보 입력</Title>
-            <Form type='text' label='이름' />
-            <Form type='email' label='이메일' />
-            <Form type='date' label='생년월일' />
-            <Form label='성별' />
+            <Form type='text' label='이름' name='name' value={form.name} onChange={handleChange} />
+            <Form type='email' label='이메일' name='email' value={form.email} onChange={handleChange} />
+            <Form type='date' label='생년월일' name='birth' value={form.birth} onChange={handleChange} />
+            <Form label='성별' name='gender' value={form.gender} onChange={handleChange} />
 
             <Button
             mode={mode.button}
