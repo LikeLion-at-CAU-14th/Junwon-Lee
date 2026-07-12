@@ -1,6 +1,6 @@
 import axios from "axios";
 import { BASE_URL } from "./publicAxios";
-import { getAccessToken } from "../auth/tokenStorage";
+import { clearTokens, getAccessToken } from "../auth/tokenStorage";
 
 export const privateAxios = axios.create({
     baseURL: BASE_URL,
@@ -19,6 +19,11 @@ privateAxios.interceptors.request.use((config) => {
 privateAxios.interceptors.response.use(
     (response) => response.data,
     async(error) => {
+        if(error.response?.status === 401) {
+            clearTokens();
+            window.location.href = "/";
+        }
+        
         return Promise.reject(error);
     },
 );
