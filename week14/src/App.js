@@ -4,13 +4,29 @@ import Signup from "./pages/Signup";
 import Mypage from "./pages/Mypage";
 import PrivateRoute from "./auth/PrivateRoute";
 import "./App.css";
+import PublicRoute from "./auth/PublicRoute";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />;
-        <Route path="/signup" element={<Signup />} />;
+        <Route 
+          path="/"
+          element={
+            <PublicRoute>
+              <Home />
+            </PublicRoute>
+          }
+        />;
+
+        <Route
+          path="/signup"
+          element={
+            <PublicRoute>
+              <Signup />
+            </PublicRoute>
+          }
+        />;
 
         <Route
           path="/mypage"
