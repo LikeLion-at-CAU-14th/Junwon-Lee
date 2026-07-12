@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components';
 import { getMyPage } from '../apis/user';
+import { useNavigate } from 'react-router-dom';
+import { clearTokens } from '../auth/tokenStorage';
 
 const Mypage = () => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const [toastMessage, setToastMessage] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(( ) => {
     getMyPage()
@@ -19,6 +23,11 @@ const Mypage = () => {
   }, []);
 
   // TODO: 마이페이지 로그아웃 버튼 만들어 로그아웃 구현하기
+  const onClick = () => {
+    clearTokens();
+    setToastMessage("로그아웃 되었습니다.");
+    setTimeout(() => navigate("/", { replace: true }), 1000);
+  }
 
   if (loading) return (
     <Wrapper>
@@ -42,6 +51,7 @@ const Mypage = () => {
           <strong>{data.age}</strong>
         </InfoRow>
       </InfoList>
+      <LogoutButton onClick={onClick}>로그아웃</LogoutButton>
     </Wrapper>
   )
 }
