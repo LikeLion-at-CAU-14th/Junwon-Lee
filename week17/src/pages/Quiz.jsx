@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -53,84 +52,29 @@ const Quiz = () => {
     const question = questions[current];
 
     return (
-        <Container>
-            <Progress>{current + 1} / {questions.length}</Progress>
+        <div className="flex flex-col items-center gap-6 w-[650px] max-w-[90%] m-5">
+            <div className="text-xl font-bold text-[#75b5f5]">
+                {current + 1} / {questions.length}
+            </div>
 
-            <QuestionCard>
-                <QuestionText>{question?.question}</QuestionText>
-                <AnswerList>
+            <div className="w-full bg-white px-[30px] py-10 rounded-[16px] shadow-[2px_2px_10px_rgba(0,0,0,0.1)]
+                            flex flex-col items-center justify-center gap-[30px]">
+                <div className="text-[24px] font-semibold text-[#535353] text-center">{question?.question}</div>
+                <div className="flex flex-col gap-4 w-full items-center">
                     {question?.answers.map((answer) => (
-                        <AnswerButton
+                        <button
+                            className="w-[90%] p-4 text-[17px] text-[#535353] text-left border-2 border-[#ddd] bg-white rounded-[12px] cursor-pointer
+                                       transition-all duration-200 ease-in-out hover:border-[#75b5f5] hover:bg-[#f0f8ff]"
                             key={answer}
                             onClick={() => handleSelect(answer)}
                         >
                             {answer}
-                        </AnswerButton>
+                        </button>
                     ))}
-                </AnswerList>
-            </QuestionCard>
-        </Container>
+                </div>
+            </div>
+        </div>
     )
 }
 
 export default Quiz
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  width: 600px;
-  max-width: 90%;
-  margin: 20px;
-`;
-
-const Progress = styled.div`
-  font-size: 20px;
-  font-weight: 700;
-  color: #75b5f5;
-`;
-
-const QuestionCard = styled.div`
-  width: 100%;
-  background-color: white;
-  padding: 40px 30px;
-  border-radius: 16px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-`;
-
-const QuestionText = styled.div`
-  font-size: 24px;
-  font-weight: 600;
-  color: #535353;
-  text-align: center;
-`;
-
-const AnswerList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-`;
-
-const AnswerButton = styled.button`
-  width: 90%;
-  padding: 16px;
-  font-size: 17px;
-  border: 2px solid #ddd;
-  background-color: white;
-  color: #535353;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:hover {
-    border-color: #75b5f5;
-    background-color: #f0f8ff;
-  }
-`;
