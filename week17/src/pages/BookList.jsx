@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components';
 import BookDetailDom from './BookDetail';
 import { Outlet, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
@@ -48,14 +47,3 @@ const BookList = () => {
 }
 
 export default BookList
-
-const BookListDom = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  background-color: white;
-  padding: 50px;
-  height: 80%;
-  border-radius: 0 10px 10px 0;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-`;
