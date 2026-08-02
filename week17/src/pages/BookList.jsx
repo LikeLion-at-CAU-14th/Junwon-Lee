@@ -27,11 +27,11 @@ const BookList = () => {
     }, [])
 
   return (
-    <MenuDom>
-        <BookListDom>
-            <Title onClick={goHome}>🏡</Title>
-            <Title>🦁Book List🦁</Title>
-            <ul>
+    <div className="flex justify-start items-center gap-5 w-full h-[80vh] m-5">
+        <div className="flex flex-col justify-start bg-white p-[50px] h-[80vh] rounded-r-[10px] shadow-[2px_2px_5px_rgba(0,0,0,0.1)]">
+            <div className="text-[40px] text-[#535353] font-bold" onClick={goHome}>🏡</div>
+            <div className="text-[40px] text-[#535353] font-bold">🦁Book List🦁</div>
+            <ul className="list-disc pl-10">
                 {/* [실습 12] id와 매치되는 책 정보 링크로 연결 */}
                 {books.map((book) => (
                     <Link key={book.id} to={`/books/${book.id}`}>
@@ -39,31 +39,15 @@ const BookList = () => {
                     </Link>
                 ))}
             </ul>
-        </BookListDom>
+        </div>
         <BookDetailDom>
             <Outlet />
         </BookDetailDom>
-    </MenuDom>
+    </div>
   )
 }
 
 export default BookList
-
-const MenuDom = styled.div`
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  height: 80vh;
-  margin: 20px;
-`;
-
-const Title = styled.div`
-  font-size: 40px;
-  color: #535353;
-  font-weight: 700;
-`;
 
 const BookListDom = styled.div`
   display: flex;
