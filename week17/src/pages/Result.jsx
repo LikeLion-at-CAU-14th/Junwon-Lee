@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -21,65 +20,19 @@ const Result = () => {
         fetchResult();
     }, [score])
 
+    const buttonStyle = "px-6 py-[10px] text-[16px] text-[#4a4a4a] font-semibold bg-[#b8edfb] border-none rounded-[20px] cursor-pointer"
 
     return (
-        <Container>
-            <Title>퀴즈 결과</Title>
-            <ScoreText>{result?.score} / 5</ScoreText>
-            <Message>{result?.message}</Message>
-            <ButtonRow>
-                <StyledButton onClick={() => navigate("/quiz")}>다시 풀기</StyledButton>
-                <StyledButton onClick={() => navigate("/")}>홈으로</StyledButton>
-            </ButtonRow>
-        </Container>
+        <div className="flex flex-col items-center g-5 bg-white p-[50px] rounded-[16px] shadow-[2px_2px_10px_rgba(0,0,0,0.1)] m-5">
+            <div className="text-[32px] text-[#535353] font-bold">퀴즈 결과</div>
+            <div className="text-[48px] font-extrabold text-[#75b5f5] mt-6">{result?.score} / 5</div>
+            <div className="text-[22px] text-[#555] text-center mt-6">{result?.message}</div>
+            <div className="flex gap-3 mt-10">
+                <button onClick={() => navigate("/quiz")} className={buttonStyle}>다시 풀기</button>
+                <button onClick={() => navigate("/")} className={buttonStyle}>홈으로</button>
+            </div>
+        </div>
     )
 }
 
 export default Result
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  background-color: white;
-  padding: 50px;
-  border-radius: 16px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-  margin: 20px;
-`;
-
-const Title = styled.div`
-  font-size: 32px;
-  color: #535353;
-  font-weight: 700;
-`;
-
-const ScoreText = styled.div`
-  font-size: 48px;
-  font-weight: 800;
-  color: #75b5f5;
-`;
-
-const Message = styled.div`
-  font-size: 22px;
-  color: #555;
-  text-align: center;
-`;
-
-const ButtonRow = styled.div`
-  display: flex;
-  gap: 12px;
-  margin-top: 10px;
-`;
-
-const StyledButton = styled.button`
-  padding: 10px 24px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #4a4a4a;
-  background-color: #b8edfb;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-`;
