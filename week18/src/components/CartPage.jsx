@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import useCartStore from '../store/useCartStore';
+import { useState } from 'react';
 
 function CartPage() {
   const cartItems = useCartStore(((state) => state.cartItems));
@@ -12,6 +13,23 @@ function CartPage() {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
+
+  const clearCart = useCartStore((state) => state.clearCart);
+
+  const [isOrdered, setIsOrdered] = useState(false);
+
+  const handleCheckout = () => {
+    clearCart();
+    setIsOrdered(true);
+  };
+
+  if(isOrdered) {
+    return(
+      <Section>
+        <OrderComplete>주문이 완료되었습니다.</OrderComplete>
+      </Section>
+    );
+  }
 
   return(
     <Section>
@@ -37,6 +55,7 @@ function CartPage() {
             <Total>
               총 금액: {total.toLocaleString()}원
             </Total>
+            <CheckoutButton onClick={handleCheckout}>결제하기</CheckoutButton>
           </>
         )}
     </Section>
