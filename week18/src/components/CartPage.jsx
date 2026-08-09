@@ -8,12 +8,18 @@ function CartPage() {
   const increaseQuantity = useCartStore((state) => state.increaseQuantity);
   const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
 
+  const total = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+
   return(
     <Section>
         <SectionTitle>장바구니</SectionTitle>
         {cartItems.length === 0 ? (
             <Empty>담긴 상품이 없습니다.</Empty>
         ) : (
+          <>
             <List>
                 {cartItems.map((item) => (
                     <Item key={item.id}>
@@ -28,6 +34,10 @@ function CartPage() {
                     </Item>
                 ))}
             </List>
+            <Total>
+              총 금액: {total.toLocaleString()}원
+            </Total>
+          </>
         )}
     </Section>
   );
