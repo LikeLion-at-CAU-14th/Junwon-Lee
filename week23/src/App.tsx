@@ -37,6 +37,12 @@ export default function App() {
 
   const completedCount = todos.filter((todo) => todo.isDone).length;
 
+  const filteredTodos = todos.filter((todo) => {
+    if(filter === 'ongoing') return !todo.isDone;
+    if(filter === 'completed') return todo.isDone;
+    return true;
+  })
+
   // TODO [STEP 5]: 명언 상태(quote, author) 및 로딩 상태(isLoading) 선언하기
   const [quote, setQuote] = useState<string>('');
   const [author, setAuthor] = useState<string>('');
@@ -88,7 +94,7 @@ export default function App() {
           {todos.length === 0 ? (
             <Empty>할 일이 없습니다. 새로운 할 일을 추가해보세요!</Empty>
           ) : (
-            todos.map((todo) => (
+            filteredTodos.map((todo) => (
               <TodoItem
                 key = {todo.id}
                 todo = {todo}
