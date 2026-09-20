@@ -3,13 +3,15 @@ import Header from './components/Header';
 import TodoStats from './components/TodoStats';
 import TodoInput from './components/TodoInput';
 import { useState } from 'react';
-import type { QuoteResponse, Todo } from './types/todo';
+import { type FilterType, type QuoteResponse, type Todo } from './types/todo';
 import TodoItem from './components/TodoItem';
 
 
 export default function App() {
   // TODO [STEP 2]: Todo[] 제네릭 상태 선언하기
   const [todos, setTodos] = useState<Todo[]>([]);
+
+  const [filter, setFilter] = useState<FilterType>('all');
 
   // TODO [STEP 3]: handleAdd 함수 작성하기
   const handleAdd = (text: string) => {
