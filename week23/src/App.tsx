@@ -11,7 +11,7 @@ export default function App() {
   // TODO [STEP 2]: Todo[] 제네릭 상태 선언하기
   const [todos, setTodos] = useState<Todo[]>([]);
 
-  const [filter, setFilter] = useState<FilterType>('all');
+  const [filter, setFilter] = useState<FilterType>('total');
 
   // TODO [STEP 3]: handleAdd 함수 작성하기
   const handleAdd = (text: string) => {
@@ -78,6 +78,11 @@ export default function App() {
           )}
         </AdviceSection>
 
+        <FilterContainer>
+          <FilterButton $active={filter === 'total'} onClick={() => setFilter('total')}>전체</FilterButton>
+          <FilterButton $active={filter === 'ongoing'} onClick={() => setFilter('ongoing')}>진행 중</FilterButton>
+          <FilterButton $active={filter === 'completed'} onClick={() => setFilter('completed')}>완료</FilterButton>
+        </FilterContainer>
         <TodoInput onAdd = {handleAdd}/>
         <TodoList>
           {todos.length === 0 ? (
@@ -177,8 +182,7 @@ const RecommendButton = styled.button`
     background-color: #dbe4ff;
   }
 `;
-/*
-// 과제용 스타일 (필요시 사용해주세요!)
+
 const FilterContainer = styled.div`
   display: flex;
   gap: 8px;
@@ -203,4 +207,3 @@ const FilterButton = styled.button<{ $active: boolean }>`
     border-color: #ff6b35;
   }
 `;
-*/

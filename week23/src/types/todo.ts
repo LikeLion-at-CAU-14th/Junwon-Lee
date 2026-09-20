@@ -10,4 +10,4 @@ export interface QuoteResponse {
     author: string;
 }
 
-export type FilterType = 'all' | 'ongoing' | 'completed';
+export type FilterType = 'total' | 'ongoing' | 'completed';
