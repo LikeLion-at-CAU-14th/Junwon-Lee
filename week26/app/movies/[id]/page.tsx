@@ -1,3 +1,4 @@
+import MovieReviewsButton from '@/components/MovieReviewsButton';
 import { movies } from '@/data/movies';
 import { Noto_Sans_KR } from 'next/font/google';
 import Image from 'next/image';
@@ -44,6 +45,7 @@ export default async function MovieDetailPage({
       <p style={{ whiteSpace: 'pre-line' }}>{movie.description}</p>
 
       {/*과제3 - 관람평 불러오기*/}
+      <MovieReviewsButton />
 
     </main>
   );
