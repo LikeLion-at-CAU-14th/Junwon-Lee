@@ -1,6 +1,7 @@
 import LikeButton from "@/components/LikeButton";
 import { restaurants } from "@/data/restaurants";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
     return restaurants.map((restaurant) => ({
@@ -17,7 +18,7 @@ export default async function RestaurantsDetailPage({
     const restaurant = restaurants.find((item) => item.id === Number(id));
 
     if(!restaurant) {
-        return <p>그런 맛집은 도감에 없어요.</p>;
+        notFound();
     }
 
     return(
