@@ -1,4 +1,10 @@
 import { movies } from '@/data/movies';
+import { Noto_Sans_KR } from 'next/font/google';
+
+const notoSansKr = Noto_Sans_KR({
+  weight: '400',
+  subsets: ['latin'],
+});
 
 interface MovieDetailPageProps {
   params: Promise<{
@@ -20,7 +26,7 @@ export default async function MovieDetailPage({
   }
 
   return (
-    <main>
+    <main className={notoSansKr.className}>
       <h1>{movie.title}</h1>
       
       <img

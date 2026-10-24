@@ -26,7 +26,7 @@ export const movies: Movie[] = [
     genre: '범죄, 드라마, 블랙 코미디',
     director: '쿠엔틴 타란티노',
     description:
-      '이게 이렇게 된다고?\n그냥 보면 폭력과 피와 욕설이 난무하는 B급이지만, 수많은 대사들과 함계 연결되는 스토리',
+      '이게 이렇게 된다고?\n그냥 보면 폭력과 피와 욕설이 난무하는 B급이지만, 수많은 대사들과 함께 연결되는 스토리',
     image: '/posters/pulp_fiction.jpg',
   },
   {
@@ -46,7 +46,7 @@ export const movies: Movie[] = [
     genre: '범죄, 코미디',
     director: '스티븐 소더버그',
     description:
-      '카지노, 돈, 도둑질...모든 것은 계획대로\n스티븐 소더버그만의 절제된 연출 기법이 인상적인 영화',
+      '카지노, 돈, 도둑질...모든 것은 계획대로\n스티븐 소더버그만의 절제되고 스타일리시한 연출 기법. 그에 더하는 날것의 브래드 피트',
     image: '/posters/oceans_11.jpg',
   },
   {
