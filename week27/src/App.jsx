@@ -163,6 +163,9 @@ function App() {
 
 
   const handleKeyDown = (e) => {
+    // 한글 조합 중 Enter는 무시 (마지막 글자가 한 번 더 전송되는 문제 방지)
+    if (e.nativeEvent.isComposing) return;
+
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       sendMessage();
