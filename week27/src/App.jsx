@@ -1,15 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
+const INITIAL_MESSAGES = [
+  {
+    role: "assistant",
+    text: "안녕하세요! 무엇이든 물어보세요 👋",
+  },
+];
+
 function App() {
   const [input, setInput] = useState("");
 
-  const [messages, setMessages] = useState([
-    {
-      role: "assistant",
-      text: "안녕하세요! 무엇이든 물어보세요 👋",
-    },
-  ]);
+  const [messages, setMessages] = useState(INITIAL_MESSAGES);
 
   const [loading, setLoading] = useState(false);
 
@@ -20,6 +22,12 @@ function App() {
     const chatBody = chatBodyRef.current;
     chatBody?.scrollTo({ top: chatBody.scrollHeight, behavior: "smooth" });
   }, [messages, loading]);
+
+  // 대화 내용을 첫 인사 메시지만 남기고 초기화
+  const resetChat = () => {
+    setMessages(INITIAL_MESSAGES);
+    setInput("");
+  };
 
   const sendMessage = async () => { // 비동기 함수 선언
     if (!input.trim() || loading) return;
@@ -190,9 +198,19 @@ function App() {
             <p>week27 AI API 실습</p>
           </div>
 
-          <div className="status">
-            <span />
-            Online
+          <div className="header-actions">
+            <div className="status">
+              <span />
+              Online
+            </div>
+
+            <button
+              className="reset-button"
+              onClick={resetChat}
+              disabled={loading || messages === INITIAL_MESSAGES}
+            >
+              대화 초기화
+            </button>
           </div>
         </header>
 
