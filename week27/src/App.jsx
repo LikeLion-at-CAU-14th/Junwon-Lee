@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 function App() {
@@ -12,6 +12,14 @@ function App() {
   ]);
 
   const [loading, setLoading] = useState(false);
+
+  const chatBodyRef = useRef(null);
+
+  // 새 메시지나 로딩 표시가 생기면 채팅창을 맨 아래로 스크롤
+  useEffect(() => {
+    const chatBody = chatBodyRef.current;
+    chatBody?.scrollTo({ top: chatBody.scrollHeight, behavior: "smooth" });
+  }, [messages, loading]);
 
   const sendMessage = async () => { // 비동기 함수 선언
     if (!input.trim() || loading) return;
@@ -188,7 +196,7 @@ function App() {
           </div>
         </header>
 
-        <main className="chat-body">
+        <main className="chat-body" ref={chatBodyRef}>
           {messages.map((message, index) => (
             <div
               key={index}
